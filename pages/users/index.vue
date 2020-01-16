@@ -1,6 +1,6 @@
 <template>
-  <div class="respondents">
-    Respondents form
+  <div class="users">
+    Users page
   </div>
 </template>
 
@@ -10,8 +10,8 @@ export default {
 </script>
 
 <style lang="scss">
-.respondents {
-  background: $green;
+.users {
+  background: $blue;
   height: 100vh;
 }
 </style>

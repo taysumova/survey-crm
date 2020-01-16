@@ -1,6 +1,6 @@
 <template>
-  <div class="respondents">
-    Respondents form
+  <div class="call-center">
+    Call center page
   </div>
 </template>
 
@@ -10,8 +10,8 @@ export default {
 </script>
 
 <style lang="scss">
-.respondents {
-  background: $green;
+.call-center {
+  background: $blue;
   height: 100vh;
 }
 </style>
