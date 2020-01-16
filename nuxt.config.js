@@ -34,6 +34,9 @@ export default {
   router: {
     base: `/${process.env.npm_package_name}`
   },
+  generate: {
+    dir: 'public'
+  },
   /*
   ** Nuxt.js dev-modules
   */

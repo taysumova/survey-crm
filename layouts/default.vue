@@ -1,17 +1,22 @@
 <template>
-  <div class="default">
+  <div class="app">
     <sidebar />
-    <nuxt />
+    <div class="app__container">
+      <app-header />
+      <nuxt />
+    </div>
   </div>
 </template>
+
+<script>
+import Sidebar from '../components/Sidebar'
+import AppHeader from '../components/AppHeader'
+export default {
+  components: { AppHeader, Sidebar }
+}
+</script>
 
 <style lang="scss">
 .default {
 }
 </style>
-<script>
-import Sidebar from '../components/Sidebar'
-export default {
-  components: { Sidebar }
-}
-</script>
