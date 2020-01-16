@@ -17,6 +17,10 @@ export default {
 </script>
 
 <style lang="scss">
-.default {
+.app {
+  display: flex;
+  &__container {
+    width: calc(100% - 200px);
+  }
 }
 </style>

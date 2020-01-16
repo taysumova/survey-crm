@@ -29,7 +29,7 @@ export default {
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 270px;
+  width: 200px;
   &__nav-link {
     @include font(18);
     color: $gray;

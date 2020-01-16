@@ -1,6 +1,6 @@
 @import "vars";
 
-@mixin font($size: 20, $weight: 600, $lh: $size * 1.5, $type: $fontMain) {
+@mixin font($size: 20, $weight: 400, $lh: $size * 1.2, $type: $fontMain) {
   font-family: $type;
   font-size: $size * 1px;
   line-height: $lh * 1px;
