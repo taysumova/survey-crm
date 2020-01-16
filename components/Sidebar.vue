@@ -33,6 +33,10 @@ export default {
   flex-direction: column;
   width: 200px;
   padding-top: 25px;
+  .nuxt-link-exact-active {
+    border: 1px solid $brightGreen;
+    color: $brightGreen;
+  }
   &__logo {
     background: $red;
     border-radius: 50%;
@@ -56,6 +60,7 @@ export default {
     &:active,
     &:hover,
     &:target {
+      border: 1px solid transparent;
       background: $gray;
       text-shadow: 1px 0 0 currentColor;
     }
@@ -65,10 +70,6 @@ export default {
       width: 40px;
       margin-bottom: 5px;
     }
-  }
-  .nuxt-link-exact-active {
-    border: 1px solid $brightGreen;
-    color: $brightGreen;
   }
 }
 </style>
