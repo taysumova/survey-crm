@@ -3,7 +3,4 @@
 </template>
 
 <style lang="scss">
-h1 {
-  background: $green;
-}
 </style>

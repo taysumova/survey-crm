@@ -11,7 +11,6 @@ export default {
 
 <style lang="scss">
 .blacklist {
-  background: $blue;
   height: 100vh;
 }
 </style>

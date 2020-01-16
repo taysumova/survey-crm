@@ -11,7 +11,6 @@ export default {
 
 <style lang="scss">
 .call-center {
-  background: $blue;
   height: 100vh;
 }
 </style>

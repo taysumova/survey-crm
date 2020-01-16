@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar">
+    <span class="sidebar__logo"></span>
     <nuxt-link
       v-for="(item, index) in menu"
       :key="index"
@@ -7,6 +8,7 @@
       no-prefetch
       class="sidebar__nav-link"
     >
+      <img :src="require(`../assets/icons/${item.link}.svg`)" alt="Link">
       {{ item.title }}
     </nuxt-link>
   </div>
@@ -30,35 +32,43 @@ export default {
   display: flex;
   flex-direction: column;
   width: 200px;
+  padding-top: 25px;
+  &__logo {
+    background: $red;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 50px;
+  }
   &__nav-link {
-    @include font(18);
-    color: $gray;
-    padding: 15px 30px 15px 0;
-    position: relative;
-    text-align: right;
-    letter-spacing: -0.1px;
-    word-break: break-word;
-    max-width: 216px;
+    @include font(16);
+    border: 1px solid transparent;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $black;
+    height: 100px;
+    padding: 0 10px;
+    margin: 10px;
     transition: all 0.3s ease;
     &:active,
     &:hover,
     &:target {
-      background: $green;
+      background: $gray;
+      text-shadow: 1px 0 0 currentColor;
+    }
+    img {
+      object-fit: cover;
+      height: 40px;
+      width: 40px;
+      margin-bottom: 5px;
     }
   }
-  &__link-back {
-    @include font(18, 400);
-    background: none;
-    border: none;
-    outline: none;
-    display: block;
-    color: $black;
-    cursor: pointer;
-    text-transform: uppercase;
-    margin-top: 20px;
-    text-align: right;
-    width: 216px;
-    padding-right: 20px;
+  .nuxt-link-exact-active {
+    border: 1px solid $brightGreen;
+    color: $brightGreen;
   }
 }
 </style>
