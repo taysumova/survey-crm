@@ -11,6 +11,5 @@ export default {
 
 <style lang="scss">
 .users {
-  height: 100vh;
 }
 </style>

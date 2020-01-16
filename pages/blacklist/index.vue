@@ -11,6 +11,5 @@ export default {
 
 <style lang="scss">
 .blacklist {
-  height: 100vh;
 }
 </style>

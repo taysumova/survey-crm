@@ -61,6 +61,7 @@ export default {
     &:hover,
     &:target {
       border: 1px solid transparent;
+      color: $black;
       background: $gray;
       text-shadow: 1px 0 0 currentColor;
     }
