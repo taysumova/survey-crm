@@ -22,6 +22,7 @@ export default {
 .app {
   display: flex;
   &__container {
+    margin: 0 40px;
     width: calc(100% - 200px);
   }
 }

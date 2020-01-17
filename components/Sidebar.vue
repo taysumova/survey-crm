@@ -29,11 +29,20 @@ export default {
 
 <style lang="scss">
 .sidebar {
+  border-right: 0.5px solid rgba($gray, 0.7);
+  border-bottom: 0.5px solid rgba($gray, 0.7);
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 170px;
   padding-top: 25px;
+  margin-right: 30px;
   .nuxt-link-exact-active {
+    @include boxShadow($brightGreen);
+    border: 1px solid $brightGreen;
+    color: $brightGreen;
+  }
+  .nuxt-link-active {
+    @include boxShadow($brightGreen);
     border: 1px solid $brightGreen;
     color: $brightGreen;
   }

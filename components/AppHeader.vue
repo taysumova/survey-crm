@@ -58,7 +58,6 @@ export default {
   }
   &__user {
     display: flex;
-    width: 250px;
     img {
       border-radius: 50%;
       width: 60px;

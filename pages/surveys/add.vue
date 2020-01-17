@@ -1,26 +1,19 @@
 <template>
-  <form class="survey-add">
+  <div class="survey-add">
     <nav>Navigation for add</nav>
-    <h3 class="survey-add__title">
-      Добавить опрос
-    </h3>
-    <SurveyForm />
-  </form>
+    <RespondentsForm />
+  </div>
 </template>
 
 <script>
-import SurveyForm from '../../components/forms/SurveyForm'
+import RespondentsForm from '../../components/forms/RespondentsForm'
 export default {
-  components: { SurveyForm }
+  components: { RespondentsForm }
 }
 </script>
 
 <style lang="scss">
 .survey-add {
-  &__title {
-    @include font(18, 600);
-    color: $gray;
-    padding: 40px 20px 20px;
-  }
+  margin-bottom: 150px;
 }
 </style>
