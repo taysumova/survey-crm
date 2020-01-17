@@ -1,19 +1,7 @@
 <template>
   <div class="select-part">
-    <div class="range-part__item condition">
-      <span v-html="title" class="item__aside condition__title">
-      </span>
-      <select class="item__content">
-        <option value="Range1">
-          Value1
-        </option>
-        <option value="Value2">
-          Value 2
-        </option>
-      </select>
-    </div>
     <div class="range-part__item type">
-      <span v-html="typeText" class="item__aside type__title">
+      <span v-html="title" class="item__aside type__title">
       </span>
       <select class="item__content">
         <option value="Range1">
@@ -23,14 +11,6 @@
           Value 2
         </option>
       </select>
-    </div>
-    <div class="select-part__buttons">
-      <button class="add">
-        Добавить (тип)
-      </button>
-      <button class="delete">
-        Удалить условие
-      </button>
     </div>
   </div>
 </template>
@@ -42,10 +22,6 @@ export default {
     title: {
       type: String,
       default: ''
-    },
-    typeText: {
-      type: String,
-      default: ''
     }
   }
 }
@@ -53,9 +29,6 @@ export default {
 
 <style lang="scss">
 .select-part {
-  background: rgba($blue, 0.05);
-  padding: 10px 30px 40px;
-  width: 100%;
   &__item {
     @include font(16);
     align-items: center;
@@ -71,22 +44,6 @@ export default {
       width: 75%;
     }
   }
-  .condition {
-    margin-bottom: 30px;
-    &__title {
-      font-weight: 600;
-      margin-top: 20px;
-    }
-    select {
-      @include font(16);
-      @include borderFocus();
-      padding: 10px;
-    }
-    option {
-      @include font(16, 400, 30);
-      padding: 10px;
-    }
-  }
   .type {
     margin-bottom: 30px;
     &__title {
@@ -100,20 +57,6 @@ export default {
     option {
       @include font(16, 400, 30);
       padding: 10px;
-    }
-  }
-  &__buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 25%;
-    width: 75%;
-    margin-top: 40px;
-    .add {
-      @include iconButton(url("../../assets/icons/add.svg"), $brightGreen);
-    }
-    .delete {
-      @include iconButton(url("../../assets/icons/delete.svg"), $red)
     }
   }
 }

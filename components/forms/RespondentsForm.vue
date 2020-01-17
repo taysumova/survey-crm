@@ -4,8 +4,19 @@
       Добавить опрос
     </h3>
     <div class="respondents-form__parts">
-      <RangePart title="Условие 1" type-text="диапазон" />
-      <SelectPart title="Условие 2" type-text="тип" />
+      <div class="respondents-form__block">
+        <ConditionPart title="Условие 1" type-text="диапазон">
+          <RangePart title="Диапазон 1" />
+        </ConditionPart>
+      </div>
+      <div class="respondents-form__block">
+        <ConditionPart title="Условие 2" type-text="диапазон">
+          <SelectPart title="Тип 1" />
+        </ConditionPart>
+      </div>
+      <div class="respondents-form__block">
+        <ConditionPart title="Условие 3" type-text="диапазон" />
+      </div>
     </div>
     <div class="respondents-form__add">
       <button>
@@ -30,9 +41,15 @@
 <script>
 import RangePart from './RangePart'
 import SelectPart from './SelectPart'
+import ConditionPart from './ConditionPart'
 export default {
   name: 'RespondentsForm',
-  components: { SelectPart, RangePart }
+  components: { ConditionPart, SelectPart, RangePart },
+  data () {
+    return {
+      conditions: [{}]
+    }
+  }
 }
 </script>
 
@@ -43,6 +60,11 @@ export default {
     @include font(18, 600);
     color: $darkGray;
     padding: 30px 30px 20px;
+  }
+  &__block {
+    background: rgba($red, 0.05);
+    padding: 15px 30px 30px;
+    width: 100%;
   }
   &__add {
     padding: 40px 30px;
