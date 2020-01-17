@@ -1,8 +1,7 @@
 <template>
   <div class="select-part">
     <div class="range-part__item condition">
-      <span class="item__aside condition__title">
-        Condition 1 v-html title
+      <span v-html="title" class="item__aside condition__title">
       </span>
       <select class="item__content">
         <option value="Range1">
@@ -14,8 +13,7 @@
       </select>
     </div>
     <div class="range-part__item type">
-      <span class="item__aside type__title">
-        Type 1 v-html title
+      <span v-html="typeText" class="item__aside type__title">
       </span>
       <select class="item__content">
         <option value="Range1">
@@ -39,7 +37,17 @@
 
 <script>
 export default {
-  name: 'SelectPart'
+  name: 'SelectPart',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    typeText: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
@@ -65,6 +73,10 @@ export default {
   }
   .condition {
     margin-bottom: 30px;
+    &__title {
+      font-weight: 600;
+      margin-top: 20px;
+    }
     select {
       @include font(16);
       @include borderFocus();
@@ -77,6 +89,9 @@ export default {
   }
   .type {
     margin-bottom: 30px;
+    &__title {
+      text-transform: capitalize;
+    }
     select {
       @include font(16);
       @include borderFocus();

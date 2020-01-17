@@ -77,7 +77,7 @@ export default {
     }
     &__role {
       @include font(16, 400);
-      color: $gray;
+      color: $darkGray;
     }
   }
 }

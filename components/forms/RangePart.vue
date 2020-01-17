@@ -1,8 +1,7 @@
 <template>
   <div class="range-part">
     <div class="range-part__item condition">
-      <span class="item__aside condition__title">
-        Condition 1 v-html title
+      <span v-html="title" class="item__aside condition__title">
       </span>
       <select class="item__content">
         <option value="Range1">
@@ -14,7 +13,8 @@
       </select>
     </div>
     <div class="range-part__item range">
-      <span class="item__aside range__title">Diapazon 1</span>
+      <span v-html="typeText" class="item__aside range__title">
+      </span>
       <div class="item__content range__values">
         <label>
           от
@@ -28,7 +28,7 @@
     </div>
     <div class="range-part__buttons">
       <button class="add">
-        Добавить (диапазон)
+        Добавить {{ typeText }}
       </button>
       <button class="delete">
         Удалить условие
@@ -39,7 +39,17 @@
 
 <script>
 export default {
-  name: 'RangePart'
+  name: 'RangePart',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    typeText: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
@@ -65,6 +75,10 @@ export default {
   }
   .condition {
     margin-bottom: 30px;
+    &__title {
+      font-weight: 600;
+      margin-top: 20px;
+    }
     select {
       @include font(16);
       @include borderFocus();
@@ -76,6 +90,9 @@ export default {
     }
   }
   .range {
+    &__title {
+      text-transform: capitalize;
+    }
     &__number {
       @include font(16);
       @include borderFocus();

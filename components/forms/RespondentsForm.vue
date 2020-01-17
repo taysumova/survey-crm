@@ -4,8 +4,8 @@
       Добавить опрос
     </h3>
     <div class="respondents-form__parts">
-      <RangePart />
-      <SelectPart />
+      <RangePart title="Условие 1" type-text="диапазон" />
+      <SelectPart title="Условие 2" type-text="тип" />
     </div>
     <div class="respondents-form__add">
       <button>
@@ -41,10 +41,28 @@ export default {
   box-shadow: $box-shadow;
   &__title {
     @include font(18, 600);
-    color: $gray;
-    padding: 40px 30px 20px;
+    color: $darkGray;
+    padding: 30px 30px 20px;
   }
   &__add {
+    padding: 40px 30px;
+    button {
+      @include borderFocus(rgba($gray, 30%));
+      @include font(16);
+      background: $white;
+      color: $green;
+      text-align: center;
+      padding: 30px 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 40px;
+      height: 40px;
+    }
   }
   &__footer {
     background: #F4F7F9;
