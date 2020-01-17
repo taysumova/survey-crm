@@ -33,7 +33,7 @@ export default {
   border-bottom: 0.5px solid rgba($gray, 0.7);
   display: flex;
   flex-direction: column;
-  width: 170px;
+  width: 180px;
   padding-top: 25px;
   margin-right: 30px;
   .nuxt-link-exact-active {

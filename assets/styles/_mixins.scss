@@ -28,10 +28,10 @@
   }
 }
 
-@mixin button($color: $black, $borderColor: $color) {
+@mixin button($color: $black, $borderColor: $color, $boxShadow: $borderColor) {
   @include font(16);
   @include borderFocus($borderColor);
-  @include boxShadow($borderColor);
+  @include boxShadow($boxShadow);
   background: $white;
   color: $color;
   padding: 10px;
@@ -53,5 +53,21 @@
     height: 25px;
     top: 7px;
     left: 7px;
+  }
+}
+
+@mixin buttonFull($bgColor: $green, $color: $white) {
+  @include font(16);
+  background-color: $bgColor;
+  border: none;
+  border-radius: 7px;
+  color: $color;
+  padding: 10px;
+  position: relative;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  &:hover,
+  &:target {
+    opacity: 0.8;
   }
 }

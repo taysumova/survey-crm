@@ -16,7 +16,7 @@
         </span>
       </button>
     </div>
-    <div class="respondents__footer">
+    <div class="respondents-form__footer">
       <button class="test">
         Протестировать опрос
       </button>
@@ -42,7 +42,36 @@ export default {
   &__title {
     @include font(18, 600);
     color: $gray;
-    padding: 40px 20px 20px;
+    padding: 40px 30px 20px;
+  }
+  &__add {
+  }
+  &__footer {
+    background: #F4F7F9;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .test {
+      @include button($green, $white, $black);
+      padding: 13px;
+    }
+    .next {
+      @include buttonFull();
+      font-weight: 600;
+      padding: 15px 45px 15px 20px;
+      position: relative;
+      &:after {
+        background: url("../../assets/icons/arrow-forward.svg") no-repeat;
+        background-size: cover;
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 13px;
+        right: 13px;
+      }
+    }
   }
 }
 </style>

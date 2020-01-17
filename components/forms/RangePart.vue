@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .range-part {
   background: rgba($red, 0.05);
-  padding: 10px 20px 40px;
+  padding: 10px 30px 40px;
   width: 100%;
   &__item {
     @include font(16);
