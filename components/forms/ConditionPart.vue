@@ -50,7 +50,7 @@ export default {
     margin-bottom: 30px;
   }
   &__title {
-    font-weight: 600;
+    @include font(18, 600);
     margin-top: 20px;
     width: 20%;
     margin-right: 5%;

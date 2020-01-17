@@ -62,9 +62,18 @@ export default {
     padding: 30px 30px 20px;
   }
   &__block {
-    background: rgba($red, 0.05);
     padding: 15px 30px 30px;
+    position: relative;
     width: 100%;
+    &:nth-of-type(1n) {
+      @include colorBlock($brown);
+    }
+    &:nth-of-type(2n) {
+      @include colorBlock($blue);
+    }
+    &:nth-of-type(3n) {
+      @include colorBlock($green);
+    }
   }
   &__add {
     padding: 40px 30px;

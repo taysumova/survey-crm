@@ -71,3 +71,11 @@
     opacity: 0.8;
   }
 }
+
+@mixin colorBlock($color) {
+  background: rgba($color, 0.06);
+  .condition-part__title {
+    color: $color;
+    text-shadow: 1px 0 0 currentColor;
+  }
+}
