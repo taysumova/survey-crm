@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <span class="sidebar__logo"></span>
+    <nuxt-link :to="{ name: 'index' }" class="sidebar__logo" />
     <nuxt-link
       v-for="(item, index) in menu"
       :key="index"

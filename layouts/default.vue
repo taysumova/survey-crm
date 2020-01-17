@@ -3,6 +3,7 @@
     <sidebar />
     <div class="app__container">
       <app-header />
+      <breadcrumbs />
       <nuxt />
     </div>
   </div>
@@ -11,8 +12,9 @@
 <script>
 import Sidebar from '../components/Sidebar'
 import AppHeader from '../components/AppHeader'
+import Breadcrumbs from '../components/Breadcrumbs'
 export default {
-  components: { AppHeader, Sidebar }
+  components: { Breadcrumbs, AppHeader, Sidebar }
 }
 </script>
 

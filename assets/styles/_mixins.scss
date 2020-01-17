@@ -6,3 +6,52 @@
   line-height: $lh * 1px;
   font-weight: $weight;
 }
+
+@mixin border($color: $gray) {
+  border: 1px solid $color;
+  border-radius: 7px;
+}
+
+@mixin borderFocus($color: $gray) {
+  @include border($color);
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin boxShadow($color: $black) {
+  box-shadow: 0 1px 1px rgba($color, 0.3), 0 1px 2px rgba($color, 0.5);
+  &:hover,
+  &:active,
+  &:target {
+    box-shadow: none;
+  }
+}
+
+@mixin button($color: $black, $borderColor: $color) {
+  @include font(16);
+  @include borderFocus($borderColor);
+  @include boxShadow($borderColor);
+  background: $white;
+  color: $color;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: $transition;
+}
+
+@mixin iconButton($background, $color: $black, $borderColor: $color) {
+  @include button($color, $borderColor);
+  position: relative;
+  padding-left: 40px;
+  &:before {
+    background: $background;
+    background-size: cover;
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 7px;
+    left: 7px;
+  }
+}
