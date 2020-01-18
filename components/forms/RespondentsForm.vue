@@ -4,21 +4,13 @@
       Добавить опрос
     </h3>
     <div>
-      <div class="respondents-form__block">
-        <ConditionPart title="Условие 1" type-text="диапазон">
-          <RangePart title="Диапазон 1" />
-          <RangePart title="Диапазон 2" />
-          <RangePart title="Диапазон 3" />
+      <div v-for="(item, index) in conditions" :key="index" class="respondents-form__block">
+        <ConditionPart :title="`Условие ${index + 1}`" :type-text="item.optionTitle">
+          <div v-for="(opt, optIndex) in item.options" class="block__options">
+            <RangePart v-if="item.type === 'range'" :title="`${item.optionTitle} ${optIndex + 1}`" />
+            <SelectPart v-else :title="`${item.optionTitle} ${optIndex + 1}`" />
+          </div>
         </ConditionPart>
-      </div>
-      <div class="respondents-form__block">
-        <ConditionPart title="Условие 2" type-text="диапазон">
-          <SelectPart title="Тип 1" />
-          <SelectPart title="Тип 2" />
-        </ConditionPart>
-      </div>
-      <div class="respondents-form__block">
-        <ConditionPart title="Условие 3" type-text="диапазон" />
       </div>
     </div>
     <div class="respondents-form__add">
@@ -50,7 +42,26 @@ export default {
   components: { ConditionPart, SelectPart, RangePart },
   data () {
     return {
-      conditions: [{}]
+      conditions: [{
+        title: 'Тип карты лояльности',
+        type: 'select',
+        optionTitle: 'тип',
+        options: ['Standard', 'Gold', 'Platinum', 'International']
+      }, {
+        title: 'Возраст респондента',
+        type: 'range',
+        optionTitle: 'диапазон',
+        options: [{
+          from: 10,
+          to: 42
+        }, {
+          from: 10,
+          to: 42
+        }, {
+          from: 10,
+          to: 42
+        }]
+      }]
     }
   }
 }
@@ -86,6 +97,26 @@ export default {
         content: "И";
         top: -20px;
         left: 30px;
+      }
+    }
+  }
+  .block {
+    &__options {
+      &:not(:first-of-type) {
+        position: relative;
+        &:before {
+          border-radius: 7px;
+          position: absolute;
+          content: 'или';
+          top: 3px;
+          left: 0;
+          padding: 10px;
+        }
+        .select-part__title,
+        .range-part__title {
+          padding-left: 65px;
+          text-transform: capitalize;
+        }
       }
     }
   }

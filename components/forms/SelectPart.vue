@@ -32,21 +32,8 @@ export default {
   display: flex;
   width: 100%;
   margin-bottom: 20px;
-  &:not(:first-of-type) {
-    position: relative;
-    &:before {
-      border-radius: 7px;
-      position: absolute;
-      content: 'или';
-      top: 0;
-      left: 0;
-      padding: 10px;
-    }
-    .select-part__title {
-      padding-left: 65px;
-    }
-  }
   &__title {
+    text-transform: capitalize;
     width: 25%;
     margin-right: 5%;
   }

@@ -81,8 +81,7 @@
     color: $color;
     text-shadow: 1px 0 0 currentColor;
   }
-  .select-part:before,
-  .range-part:before {
+  .block__options:before {
     background: rgba($color, 0.3);
   }
 }
