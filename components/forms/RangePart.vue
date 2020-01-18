@@ -33,9 +33,24 @@ export default {
   align-items: center;
   display: flex;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  &:not(:first-of-type) {
+    position: relative;
+    &:before {
+      background: blue;
+      border-radius: 7px;
+      position: absolute;
+      content: 'или';
+      top: 5px;
+      left: 0;
+      padding: 10px;
+    }
+    .range-part__title {
+      padding-left: 65px;
+    }
+  }
   &__title {
-    width: 20%;
+    width: 25%;
     margin-right: 5%;
   }
   &__number {

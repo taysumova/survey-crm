@@ -3,10 +3,11 @@
     <h3 class="respondents-form__title">
       Добавить опрос
     </h3>
-    <div class="respondents-form__parts">
+    <div>
       <div class="respondents-form__block">
         <ConditionPart title="Условие 1" type-text="диапазон">
           <RangePart title="Диапазон 1" />
+          <RangePart title="Диапазон 2" />
         </ConditionPart>
       </div>
       <div class="respondents-form__block">
@@ -63,7 +64,6 @@ export default {
   }
   &__block {
     padding: 15px 30px 30px;
-    position: relative;
     width: 100%;
     &:nth-of-type(1n) {
       @include colorBlock($brown);
@@ -73,6 +73,18 @@ export default {
     }
     &:nth-of-type(3n) {
       @include colorBlock($green);
+    }
+    &:not(:first-of-type) {
+      position: relative;
+      &:before {
+        @include font(16);
+        border-radius: 7px;
+        padding: 13px 20px;
+        position: absolute;
+        content: "И";
+        top: -20px;
+        left: 30px;
+      }
     }
   }
   &__add {

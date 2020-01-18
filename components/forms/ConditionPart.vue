@@ -12,7 +12,9 @@
         </option>
       </select>
     </div>
-    <slot></slot>
+    <div>
+      <slot></slot>
+    </div>
     <div class="condition-part__buttons">
       <button class="add">
         Добавить {{ typeText }}
@@ -52,14 +54,14 @@ export default {
   &__title {
     @include font(18, 600);
     margin-top: 20px;
-    width: 20%;
+    width: 25%;
     margin-right: 5%;
   }
   &__select {
     @include font(16);
     @include borderFocus();
     padding: 10px;
-    width: 75%;
+    width: 70%;
     option {
       @include font(16, 400, 30);
       padding: 10px;
@@ -69,8 +71,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 25%;
-    width: 75%;
+    margin-left: 30%;
+    width: 70%;
     margin-top: 40px;
     .add {
       @include iconButton(url("../../assets/icons/add.svg"), $brightGreen);

@@ -31,9 +31,9 @@ export default {
   align-items: center;
   display: flex;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   &__title {
-    width: 20%;
+    width: 25%;
     margin-right: 5%;
   }
   &__content {

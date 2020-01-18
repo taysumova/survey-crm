@@ -74,8 +74,14 @@
 
 @mixin colorBlock($color) {
   background: rgba($color, 0.06);
+  &:before {
+    background: rgba($color, 0.3);
+  }
   .condition-part__title {
     color: $color;
     text-shadow: 1px 0 0 currentColor;
+  }
+  .range-part:before {
+    background: rgba($color, 0.3);
   }
 }
