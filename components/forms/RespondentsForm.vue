@@ -8,11 +8,13 @@
         <ConditionPart title="Условие 1" type-text="диапазон">
           <RangePart title="Диапазон 1" />
           <RangePart title="Диапазон 2" />
+          <RangePart title="Диапазон 3" />
         </ConditionPart>
       </div>
       <div class="respondents-form__block">
         <ConditionPart title="Условие 2" type-text="диапазон">
           <SelectPart title="Тип 1" />
+          <SelectPart title="Тип 2" />
         </ConditionPart>
       </div>
       <div class="respondents-form__block">

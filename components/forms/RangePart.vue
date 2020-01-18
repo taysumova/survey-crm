@@ -37,7 +37,6 @@ export default {
   &:not(:first-of-type) {
     position: relative;
     &:before {
-      background: blue;
       border-radius: 7px;
       position: absolute;
       content: 'или';
