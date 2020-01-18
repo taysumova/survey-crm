@@ -19,7 +19,7 @@
       <button class="add">
         Добавить {{ typeText }}
       </button>
-      <button class="delete">
+      <button @click="$emit('remove')" class="delete">
         Удалить условие
       </button>
     </div>
