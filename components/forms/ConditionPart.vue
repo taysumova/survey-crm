@@ -1,25 +1,47 @@
 <template>
   <div class="condition-part">
     <div class="condition-part__main">
-      <span v-html="title" class="condition-part__title">
+      <span class="condition-part__title">
+        Условие {{ conditionIndex + 1 }}
       </span>
-      <select class="condition-part__select">
-        <option value="Range1">
-          Value1
+      <select
+        v-model="condition"
+        class="condition-part__select"
+      >
+        <option
+          value=""
+          hidden
+        >
+          Выберите условие
         </option>
-        <option value="Value2">
-          Value 2
+        <option
+          v-for="(item, index) in config"
+          :key="index"
+          :value="item.value"
+        >
+          {{ item.title }}
         </option>
       </select>
     </div>
     <div>
-      <slot></slot>
+      <div v-for="(opt, optIndex) in selectedCond.selectedOps" class="block__options">
+        <RangePart
+          v-if="selectedCond.type === 'range'"
+          :title="`${selectedCond.optionTitle} ${optIndex + 1}`"
+        />
+        <SelectPart
+          v-else
+          :title="`${selectedCond.optionTitle}
+              ${optIndex + 1}`"
+          :config="selectedCond.options"
+        />
+      </div>
     </div>
     <div class="condition-part__buttons">
-      <button class="add">
-        Добавить {{ typeText }}
+      <button v-if="condition" @click="addType()" class="add">
+        Добавить {{ selectedCond.optionTitle }}
       </button>
-      <button @click="$emit('remove')" class="delete">
+      <button @click="$emit('remove', conditionIndex)" class="delete">
         Удалить условие
       </button>
     </div>
@@ -27,16 +49,49 @@
 </template>
 
 <script>
+import surveyOptions from '../../config/surveyOptions.js'
+import RangePart from './RangePart'
+import SelectPart from './SelectPart'
 export default {
   name: 'ConditionPart',
+  components: { SelectPart, RangePart },
   props: {
-    title: {
-      type: String,
-      default: ''
+    conditionIndex: {
+      type: Number,
+      default: 0
+    }
+  },
+  data () {
+    return {
+      condition: '',
+      selectedCond: {
+        selectedOps: []
+      }
+    }
+  },
+  computed: {
+    config () {
+      return surveyOptions
+    }
+  },
+  watch: {
+    condition (next) {
+      if (next) {
+        this.selectCondition()
+      }
+    }
+  },
+  methods: {
+    selectCondition () {
+      const configCond = this.config.find(item => item.value === this.condition)
+      this.selectedCond = {
+        ...configCond,
+        selectedOps: []
+      }
+      this.$emit('condition-change', this.conditionIndex, this.selectedCond)
     },
-    typeText: {
-      type: String,
-      default: ''
+    addType () {
+      this.selectedCond.selectedOps.push('Option')
     }
   }
 }
@@ -74,6 +129,9 @@ export default {
     margin-left: 30%;
     width: 70%;
     margin-top: 40px;
+    button:only-child {
+      margin-left: auto;
+    }
     .add {
       @include iconButton(url("../../assets/icons/add.svg"), $brightGreen);
     }

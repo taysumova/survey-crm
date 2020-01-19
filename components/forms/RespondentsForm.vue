@@ -5,12 +5,11 @@
     </h3>
     <div>
       <div v-for="(item, index) in conditions" :key="index" class="respondents-form__block">
-        <ConditionPart :title="`Условие ${index + 1}`" :type-text="item.optionTitle" @remove="removeCondition(index)">
-          <div v-for="(opt, optIndex) in item.options" class="block__options">
-            <RangePart v-if="item.type === 'range'" :title="`${item.optionTitle} ${optIndex + 1}`" />
-            <SelectPart v-else :title="`${item.optionTitle} ${optIndex + 1}`" />
-          </div>
-        </ConditionPart>
+        <ConditionPart
+          :conditionIndex="index"
+          @condition-change="selectCondition"
+          @remove="removeCondition"
+        />
       </div>
     </div>
     <div class="respondents-form__add">
@@ -34,44 +33,26 @@
 </template>
 
 <script>
-import RangePart from './RangePart'
-import SelectPart from './SelectPart'
 import ConditionPart from './ConditionPart'
+
 export default {
   name: 'RespondentsForm',
-  components: { ConditionPart, SelectPart, RangePart },
+  components: { ConditionPart },
   data () {
     return {
-      conditions: [{
-        title: 'Тип карты лояльности',
-        type: 'select',
-        optionTitle: 'тип',
-        options: ['Standard', 'Gold', 'Platinum', 'International']
-      }, {
-        title: 'Возраст респондента',
-        type: 'range',
-        optionTitle: 'диапазон',
-        options: [{
-          from: 10,
-          to: 42
-        }, {
-          from: 10,
-          to: 42
-        }, {
-          from: 10,
-          to: 42
-        }]
-      }]
+      conditions: []
     }
   },
   methods: {
     addCondition () {
       this.conditions.push({
         title: '',
-        type: '',
-        optionTitle: '',
-        options: []
+        type: 'select',
+        optionTitle: ''
       })
+    },
+    selectCondition (index, item) {
+      this.conditions[index] = item
     },
     removeCondition (index) {
       this.conditions.splice(index, 1)

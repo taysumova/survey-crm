@@ -2,7 +2,7 @@
   <div class="range-part">
     <span v-html="title" class="range-part__title">
     </span>
-    <div class="range-part__content">
+    <div>
       <label>
         от
         <input class="range-part__number" type="number">
