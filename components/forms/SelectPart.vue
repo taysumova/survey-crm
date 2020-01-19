@@ -2,12 +2,23 @@
   <div class="select-part">
     <span v-html="title" class="select-part__title">
     </span>
-    <select class="select-part__content">
-      <option value="Range1">
-        Value1
+    <select
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+      class="select-part__content"
+    >
+      <option
+        value=""
+        hidden
+      >
+        Выберите {{ title }}
       </option>
-      <option value="Value2">
-        Value 2
+      <option
+        v-for="(item, index) in config"
+        :key="index"
+        :value="item"
+      >
+        {{ item }}
       </option>
     </select>
   </div>
@@ -20,6 +31,16 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    value: {
+      type: String,
+      default: ''
+    },
+    config: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   }
 }

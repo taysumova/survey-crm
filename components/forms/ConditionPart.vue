@@ -30,6 +30,7 @@
           :title="`${selectedCond.optionTitle} ${optIndex + 1}`"
         />
         <SelectPart
+          v-model="selectedCond.selectedOps[optIndex]"
           v-else
           :title="`${selectedCond.optionTitle}
               ${optIndex + 1}`"
@@ -91,7 +92,7 @@ export default {
       this.$emit('condition-change', this.conditionIndex, this.selectedCond)
     },
     addType () {
-      this.selectedCond.selectedOps.push('Option')
+      this.selectedCond.selectedOps.push('')
     }
   }
 }
