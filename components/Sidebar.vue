@@ -84,6 +84,7 @@ export default {
     height: 100px;
     padding: 0 10px;
     margin: 10px;
+    white-space: nowrap;
     transition: all 0.3s ease;
     &:active,
     &:hover,
