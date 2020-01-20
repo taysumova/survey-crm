@@ -3,12 +3,18 @@
     <nuxt-link :to="{ name: 'index' }">
       <img src="../assets/icons/home.svg" alt="Home">
     </nuxt-link>
+    {{ routePath }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Breadcrumbs'
+  name: 'Breadcrumbs',
+  computed: {
+    routePath () {
+      return this.$route.path
+    }
+  }
 }
 </script>
 
