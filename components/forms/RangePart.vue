@@ -5,11 +5,21 @@
     <div>
       <label>
         от
-        <input class="range-part__number" type="number">
+        <input
+          v-bind:value="value.from"
+          v-on:input="changeRange('from', $event.target.value)"
+          class="range-part__number"
+          type="number"
+        >
       </label>
       <label>
         до
-        <input class="range-part__number" type="number">
+        <input
+          v-bind:value="value.to"
+          v-on:input="changeRange('to', $event.target.value)"
+          class="range-part__number"
+          type="number"
+        >
       </label>
     </div>
   </div>
@@ -22,6 +32,23 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    value: {
+      type: Object,
+      default () {
+        return {
+          from: '',
+          to: ''
+        }
+      }
+    }
+  },
+  methods: {
+    changeRange (key, value) {
+      this.$emit('input', {
+        ...this.value,
+        [key]: value
+      })
     }
   }
 }

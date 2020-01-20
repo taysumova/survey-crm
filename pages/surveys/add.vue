@@ -8,7 +8,13 @@
 <script>
 import RespondentsForm from '../../components/forms/RespondentsForm'
 export default {
-  components: { RespondentsForm }
+  components: { RespondentsForm },
+  data () {
+    return {
+      menu: [
+      ]
+    }
+  }
 }
 </script>
 

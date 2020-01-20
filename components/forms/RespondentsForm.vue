@@ -6,13 +6,14 @@
     <div>
       <div v-for="(item, index) in conditions" :key="index" class="respondents-form__block">
         <ConditionPart
+          :config="config"
           :conditionIndex="index"
           @condition-change="selectCondition"
           @remove="removeCondition"
         />
       </div>
     </div>
-    <div class="respondents-form__add">
+    <div v-if="config.length" class="respondents-form__add">
       <button @click="addCondition">
         <img src="../../assets/icons/add-dark.svg" alt="Add">
         <span>
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import surveyOptions from '../../config/surveyOptions.js'
 import ConditionPart from './ConditionPart'
 
 export default {
@@ -40,8 +42,12 @@ export default {
   components: { ConditionPart },
   data () {
     return {
-      conditions: []
+      conditions: [],
+      config: []
     }
+  },
+  created () {
+    this.config = surveyOptions
   },
   methods: {
     addCondition () {
@@ -51,11 +57,21 @@ export default {
         optionTitle: ''
       })
     },
+    changeConfig () {
+      this.config = surveyOptions.filter((item) => {
+        const isSelected = this.conditions.some(cond => item.value === cond.value)
+        if (!isSelected) {
+          return item
+        }
+      })
+    },
     selectCondition (index, item) {
       this.conditions[index] = item
+      this.changeConfig()
     },
     removeCondition (index) {
       this.conditions.splice(index, 1)
+      this.changeConfig()
     }
   }
 }
@@ -72,6 +88,7 @@ export default {
   &__block {
     padding: 15px 30px 30px;
     width: 100%;
+    transition: $transition;
     &:nth-of-type(1n) {
       @include colorBlock($brown);
     }
@@ -116,6 +133,7 @@ export default {
   }
   &__add {
     padding: 40px 30px;
+    transition: $transition;
     button {
       @include borderFocus(rgba($gray, 30%));
       @include font(16);

@@ -8,7 +8,10 @@
       no-prefetch
       class="sidebar__nav-link"
     >
-      <img :src="require(`../assets/icons/${item.link}.svg`)" alt="Link">
+      <surveys-logo v-if="item.link === 'surveys'" />
+      <users-logo v-if="item.link === 'users'" />
+      <blacklist-logo v-if="item.link === 'blacklist'" />
+      <callcenter-logo v-if="item.link === 'callcenter'" />
       {{ item.title }}
     </nuxt-link>
   </div>
@@ -16,9 +19,19 @@
 
 <script>
 import menu from '@/config/menu'
+import SurveysLogo from '@/assets/icons/surveys.vue'
+import UsersLogo from '@/assets/icons/users.vue'
+import BlacklistLogo from '@/assets/icons/blacklist.vue'
+import CallcenterLogo from '@/assets/icons/callcenter.vue'
 
 export default {
   name: 'Sidebar',
+  components: {
+    SurveysLogo,
+    UsersLogo,
+    BlacklistLogo,
+    CallcenterLogo
+  },
   computed: {
     menu () {
       return menu
@@ -40,11 +53,17 @@ export default {
     @include boxShadow($brightGreen);
     border: 1px solid $brightGreen;
     color: $brightGreen;
+    .svg-color {
+      fill: $brightGreen;
+    }
   }
   .nuxt-link-active {
     @include boxShadow($brightGreen);
     border: 1px solid $brightGreen;
     color: $brightGreen;
+    .svg-color {
+      fill: $brightGreen;
+    }
   }
   &__logo {
     background: $red;
@@ -73,11 +92,11 @@ export default {
       color: $black;
       background: $gray;
       text-shadow: 1px 0 0 currentColor;
+      .svg-color {
+        fill: $black
+      }
     }
-    img {
-      object-fit: cover;
-      height: 40px;
-      width: 40px;
+    svg {
       margin-bottom: 5px;
     }
   }

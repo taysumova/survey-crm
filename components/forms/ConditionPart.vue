@@ -15,7 +15,7 @@
           Выберите условие
         </option>
         <option
-          v-for="(item, index) in config"
+          v-for="(item, index) in localConfig"
           :key="index"
           :value="item.value"
         >
@@ -26,6 +26,7 @@
     <div>
       <div v-for="(opt, optIndex) in selectedCond.selectedOps" class="block__options">
         <RangePart
+          v-model="selectedCond.selectedOps[optIndex]"
           v-if="selectedCond.type === 'range'"
           :title="`${selectedCond.optionTitle} ${optIndex + 1}`"
         />
@@ -39,7 +40,7 @@
       </div>
     </div>
     <div class="condition-part__buttons">
-      <button v-if="condition" @click="addType()" class="add">
+      <button v-if="condition" @click="addPart" class="add">
         Добавить {{ selectedCond.optionTitle }}
       </button>
       <button @click="$emit('remove', conditionIndex)" class="delete">
@@ -50,7 +51,6 @@
 </template>
 
 <script>
-import surveyOptions from '../../config/surveyOptions.js'
 import RangePart from './RangePart'
 import SelectPart from './SelectPart'
 export default {
@@ -60,6 +60,12 @@ export default {
     conditionIndex: {
       type: Number,
       default: 0
+    },
+    config: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   },
   data () {
@@ -71,8 +77,12 @@ export default {
     }
   },
   computed: {
-    config () {
-      return surveyOptions
+    localConfig () {
+      const localArr = this.config.slice()
+      if (this.selectedCond.value) {
+        localArr.push(this.selectedCond)
+      }
+      return localArr
     }
   },
   watch: {
@@ -91,7 +101,14 @@ export default {
       }
       this.$emit('condition-change', this.conditionIndex, this.selectedCond)
     },
-    addType () {
+    addPart () {
+      if (this.selectedCond.type === 'range') {
+        this.selectedCond.selectedOps.push({
+          to: '',
+          from: ''
+        })
+        return
+      }
       this.selectedCond.selectedOps.push('')
     }
   }
