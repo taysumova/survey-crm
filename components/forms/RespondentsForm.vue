@@ -26,15 +26,26 @@
       <button class="test">
         Протестировать опрос
       </button>
-      <button class="next">
+      <button
+        :disabled="loading"
+        @click="saveSurvey"
+        class="next"
+      >
         Далее
       </button>
+    </div>
+    <div v-if="alert" :class="success ? 'app-alert--success' : 'app-alert--error'" class="app-alert">
+      <p class="app-alert__text">
+        {{ success ? success : error }}
+      </p>
+      <button @click="alert = false" class="app-alert__close"></button>
     </div>
   </div>
 </template>
 
 <script>
 import surveyOptions from '../../config/surveyOptions.js'
+import SurveyService from '../../services/SurveyService'
 import ConditionPart from './ConditionPart'
 
 export default {
@@ -43,7 +54,11 @@ export default {
   data () {
     return {
       conditions: [],
-      config: []
+      config: [],
+      loading: false,
+      error: '',
+      success: '',
+      alert: false
     }
   },
   created () {
@@ -72,12 +87,70 @@ export default {
     removeCondition (index) {
       this.conditions.splice(index, 1)
       this.changeConfig()
+    },
+    showAlert (status, msg) {
+      if (status === 'error') {
+        this.error = msg
+      } else {
+        this.success = msg
+      }
+      this.alert = true
+      return new Promise(function (resolve) {
+        setTimeout(function () {
+          this.alert = false
+          resolve()
+        }, 5000)
+      })
+    },
+    async saveSurvey () {
+      try {
+        this.loading = true
+        await SurveyService.addSurvey({
+          conditions: this.conditions
+        })
+        await this.showAlert('success', 'Опрос успешно создан')
+        this.$router.go(-1)
+      } catch (e) {
+        this.showAlert('error', 'Ошибка при получении информации')
+      } finally {
+        this.loading = false
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
+.app-alert {
+  border-radius: 7px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 20px 30px;
+  z-index: 10;
+  &--success {
+    background: $green;
+  }
+  &--error {
+    background: $red;
+  }
+  &__text {
+    @include font(16, 600);
+    color: $white;
+  }
+  &__close {
+    background: url("../../assets/icons/close.svg") no-repeat;
+    background-size: cover;
+    border: 1px solid transparent;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    outline: none;
+  }
+}
 .respondents-form {
   box-shadow: $box-shadow;
   &__title {

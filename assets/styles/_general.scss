@@ -34,6 +34,13 @@ button {
   outline: none;
 }
 
+button[disabled="disabled"],
+button[disabled] {
+  background: $darkGray !important;
+  opacity: 0.8;
+  cursor: auto !important;
+}
+
 .page-enter-active, .page-leave-active {
   transition: opacity .5s;
 }
